@@ -1,0 +1,133 @@
+﻿<Window x:Class="EAST_COAST_RAIL.BookingWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:EAST_COAST_RAIL"
+        mc:Ignorable="d"
+        Title="BookingWindow" Height="450" Width="800" Background="AliceBlue">
+    <Grid>
+        <TextBlock x:Name="BOOKING_title" 
+                   HorizontalAlignment="Left"  
+                   TextWrapping="Wrap" 
+                   Text="BOOK A RIDE" 
+                   Width="668"
+                   FontStyle="Italic" FontWeight="ExtraBlack"
+                   FontSize="45
+                   " 
+                   TextAlignment="Center" 
+                   Foreground="#FF5C59B3" Margin="51,10,0,341" FontFamily="Rockwell Extra Bold"/>
+        <Button x:Name="HOME" Content="HOME" 
+                HorizontalAlignment="Center" 
+                Margin="0,364,0,0" 
+                VerticalAlignment="Top" 
+                Height="42" Width="90" 
+                Foreground="#FF5C59B3" FontFamily="Rockwell Condensed" FontSize="25" Click="home_click"/>
+        <TextBlock x:Name="DEPARTURE" 
+                   HorizontalAlignment="Left" 
+                   Margin="66,72,0,0" 
+                   TextWrapping="Wrap" 
+                   VerticalAlignment="Top" 
+                   FontFamily="Rockwell Condensed" 
+                   FontSize="25" Foreground="#FF5C59B3">
+            <Run Text="Select your "/><LineBreak/><Run Text="departure station:"/></TextBlock>
+        <CheckBox x:Name="departureWaverley" Content="Edinburgh Waverley" FontFamily="Rockwell" Foreground="#FF5C59B3"
+                     HorizontalAlignment="Left" FontWeight="DemiBold"
+                     Margin="66,138,0,0" VerticalAlignment="Top" Checked="departureWaverley_Checked"/>
+        <CheckBox x:Name="departureLondon" Content="London King's Cross" FontFamily="Rockwell" Foreground="#FF5C59B3"
+                     HorizontalAlignment="Left" FontWeight="DemiBold"
+                     Margin="66,158,0,0" VerticalAlignment="Top" Checked="departureLondon_Checked"/>
+        <CheckBox x:Name="stopDeparture" Content="York/Newcastle" FontFamily="Rockwell" Foreground="#FF5C59B3"
+                     HorizontalAlignment="Left" FontWeight="DemiBold"
+                     Margin="66,178,0,0" VerticalAlignment="Top" Checked="departureStops_Checked"/>
+        <TextBlock x:Name="STOPS"
+                   HorizontalAlignment="Left" Foreground="#FF5C59B3"
+                   Margin="64,206,0,0" TextWrapping="Wrap" 
+                   FontFamily="Rockwell Condensed" FontSize="25"
+                   Text="Will you be making stops?" VerticalAlignment="Top"/>
+        <CheckBox x:Name="interStops" Content="Newcastle / York" 
+                  HorizontalAlignment="Left" Margin="66,280,0,0"
+                  VerticalAlignment="Top" Background="AliceBlue"
+                  FontFamily="Rockwell" FontWeight="DemiBold"
+                  Foreground="#FF5C59B3" Checked="interStops_Checked"/>
+        <DatePicker x:Name="DEPDATE" HorizontalAlignment="Left" Foreground="#FF5C59B3"
+                    Margin="316,222,0,0" VerticalAlignment="Top" 
+                    FontFamily="Rockwell Extra Bold" Width="130"/>
+
+        <TextBlock x:Name="tktNumPrompt" 
+                   HorizontalAlignment="Left" 
+                   Margin="316,153,0,0" TextWrapping="Wrap" FontSize="25"
+                   Text="Choose # of Tickets:" VerticalAlignment="Top" 
+                   Foreground="#FF5C59B3" FontFamily="Rockwell Condensed" Width="212"/>
+        <TextBlock x:Name="classPrompt" 
+                   HorizontalAlignment="Left" Margin="315,75,0,0" TextWrapping="Wrap" 
+                   Text="Select your ticket class:" VerticalAlignment="Top" FontSize="25"
+                   Foreground="#FF5C59B3" FontFamily="Rockwell Condensed"/>
+        <RadioButton x:Name="firstClassCheck" 
+                     Content="First Class" FontFamily="Rockwell" 
+                     HorizontalAlignment="Left" Foreground="#FF5C59B3"
+                     Margin="315,109,0,0" VerticalAlignment="Top" FontWeight="DemiBold" Checked="firstClass_Checked"/>
+        <RadioButton x:Name="standardCheck" Content="Standard Class" 
+                     HorizontalAlignment="Left" FontFamily="Rockwell" Foreground="#FF5C59B3"
+                     Margin="315,128,0,0" VerticalAlignment="Top" FontWeight="DemiBold" Checked="Standard_Checked"/>
+        <TextBlock x:Name="seatPrompt" HorizontalAlignment="Left" 
+                   Margin="560,80,0,0" TextWrapping="Wrap"
+                   Text="Enter Seatcode (1-400):" VerticalAlignment="Top" FontSize="25"
+                   Foreground="#FF5C59B3" FontFamily="Rockwell Condensed" Width="156"/>
+        <TextBox x:Name="seatCode" HorizontalAlignment="Left" 
+                 TextWrapping="Wrap" Text="Enter seatcode here: " FontWeight="DemiBold"
+                 VerticalAlignment="Top" Width="194" Background="AliceBlue" FontFamily="Rockwell" Foreground="#FF5C59B3" Margin="559,149,0,0" TextChanged="seatCode_TextChanged" />
+        <TextBlock x:Name="seatNum" 
+                   HorizontalAlignment="Left" Margin="312,257,0,0" FontSize="25"
+                   TextWrapping="Wrap"
+                   VerticalAlignment="Top" Foreground="#FF5C59B3" 
+                   FontFamily="Rockwell Condensed" RenderTransformOrigin="0.413,-0.34"><Run Text="Would you like to "/><LineBreak/><Run Text="reserve seats?"/></TextBlock>
+        <Button x:Name="generateManifest" Content="GENERATE &#xD;&#xA;MANIFEST"
+                HorizontalAlignment="Left" Margin="593,316,0,0" 
+                FontFamily="Rockwell Extra Bold" FontSize="15" Foreground="#FF5C59B3" HorizontalContentAlignment="Center"
+                VerticalAlignment="Top" Height="90" Width="126" Click="manifest_click"/>
+        <TextBlock x:Name="stopCondition" HorizontalAlignment="Left" 
+                   Margin="66,237,0,0" TextWrapping="Wrap" VerticalAlignment="Top" 
+                   Foreground="#FF5C59B3" FontFamily="Rockwell Condensed" 
+                   FontSize="16"><Run Text="Only if your departure stop is"/><LineBreak/><Run Text="London/Edinburgh!"/></TextBlock>
+        <TextBlock x:Name="destination" 
+                   HorizontalAlignment="Left" Margin="64,308,0,0" 
+                   TextWrapping="Wrap" Text="Select your destination:"
+                   VerticalAlignment="Top" Foreground="#FF5C59B3" 
+                   FontFamily="Rockwell Condensed" FontSize="25"/>
+        <CheckBox x:Name="waverleyArrival" Content="Edinburgh Waverley" FontFamily="Rockwell" Foreground="#FF5C59B3"
+                     HorizontalAlignment="Left" FontWeight="DemiBold"
+                     Margin="69,340,0,0" VerticalAlignment="Top" Checked="waverleyArrival_Checked"/>
+        <CheckBox x:Name="londonArrival" Content="London King's Cross" FontFamily="Rockwell" Foreground="#FF5C59B3"
+                     HorizontalAlignment="Left" FontWeight="DemiBold"
+                     Margin="69,360,0,0" VerticalAlignment="Top" Checked="londonArrival_Checked"/>
+        <CheckBox x:Name="stopsArrival" Content="York/Newcastle" FontFamily="Rockwell" Foreground="#FF5C59B3"
+                     HorizontalAlignment="Left" FontWeight="DemiBold"
+                     Margin="69,380,0,0" VerticalAlignment="Top" Checked="stopsArrival_Checked"/>
+        <CheckBox x:Name="yesSeats" Content="Yes"
+                  HorizontalAlignment="Left" Margin="316,323,0,0" FontWeight="DemiBold"
+                  VerticalAlignment="Top" Foreground="#FF5C59B3" 
+                  Checked="yesSeats_Checked" FontFamily="Rockwell"/>
+        <CheckBox x:Name="noSeats" Content="No" 
+                  HorizontalAlignment="Left" Margin="316,344,0,0" 
+                  VerticalAlignment="Top" Foreground="#FF5C59B3" 
+                  FontFamily="Rockwell" FontWeight="DemiBold"/>
+        <Label x:Name="mealReserve" Content="Would you like to&#xD;&#xA;reserve a meal?" FontSize="25"
+               HorizontalAlignment="Left" Margin="554,193,0,0" VerticalAlignment="Top" 
+               Foreground="#FF5C59B3" FontFamily="Rockwell Condensed"/>
+        <CheckBox x:Name="yesMeal" Content="Yes" HorizontalAlignment="Left" 
+                  Margin="568,262,0,0" VerticalAlignment="Top" Foreground="#FF5C59B3"
+                  FontFamily="Rockwell" FontWeight="DemiBold" Checked="yesMeal_Checked"/>
+        <CheckBox x:Name="noMeal" Content="No" HorizontalAlignment="Left" 
+                  Margin="568,284,0,0" VerticalAlignment="Top"
+                  Foreground="#FF5C59B3" FontFamily="Rockwell" FontWeight="DemiBold" Checked="noMeal_Checked"/>
+        <TextBox x:Name="tktNumber" HorizontalAlignment="Left"
+                 Margin="316,188,0,0" TextWrapping="Wrap" 
+                 Text="Enter number of tickets: " VerticalAlignment="Top" 
+                 Width="183" Background="AliceBlue" FontFamily="Rockwell" 
+                 Foreground="#FF5C59B3" FontWeight="DemiBold" TextChanged="tktNumber_TextChanged"/>
+
+
+
+    </Grid>
+</Window>
